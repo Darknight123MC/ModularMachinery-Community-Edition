@@ -19,19 +19,19 @@ public class PktGUITransport implements IMessage, IMessageHandler<PktGUITranspor
 	}
 
 	@Override
-    public void toBytes(ByteBuf buf) {
-        buf.writeLong(this.uuid.getMostSignificantBits());
-        buf.writeLong(this.uuid.getLeastSignificantBits());
-    }
+        public void toBytes(ByteBuf buf) {
+            buf.writeLong(this.uuid.getMostSignificantBits());
+            buf.writeLong(this.uuid.getLeastSignificantBits());
+        }
 
-    @Override
-    public void fromBytes(ByteBuf buf) {
-        final long most = buf.readLong();
-        final long least = buf.readLong();
-        this.uuid = new UUID(most, least);
-    }
+        @Override
+        public void fromBytes(ByteBuf buf) {
+            final long most = buf.readLong();
+            final long least = buf.readLong();
+            this.uuid = new UUID(most, least);
+        }
 
-    @Override
+        @Override
         public IMessage onMessage(PktGUITransport pkt , MessageContext ctx) {
             if (ctx.side == Side.CLIENT) {
                 EntityPlayerSP player = Minecraft.getMinecraft().player;
