@@ -8,6 +8,7 @@
 
 package hellfirepvp.modularmachinery;
 
+import me.oganesson.gui.network.PktGUITransport;
 import github.kasuminova.mmce.common.concurrent.TaskExecutor;
 import github.kasuminova.mmce.common.network.PktMEInputBusInvAction;
 import github.kasuminova.mmce.common.network.PktPerformanceReport;
@@ -98,6 +99,8 @@ public class ModularMachinery {
         NET_CHANNEL.registerMessage(PktSmartInterfaceUpdate.class, PktSmartInterfaceUpdate.class, 101, Side.SERVER);
         NET_CHANNEL.registerMessage(PktParallelControllerUpdate.class, PktParallelControllerUpdate.class, 102, Side.SERVER);
         NET_CHANNEL.registerMessage(PktMEInputBusInvAction.class, PktMEInputBusInvAction.class, 103, Side.SERVER);
+
+        NET_CHANNEL.registerMessage(PktGUITransport.class, PktGUITransport.class, 200, Side.CLIENT);
 
         proxy.loadModData(event.getModConfigurationDirectory());
 
